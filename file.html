@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simple Portfolio</title>
+    <meta name="description" content="Simple, responsive portfolio template" />
+    <style>
+        :root{
+            --bg:#0f1724;
+            --card:#0b1220;
+            --muted:#94a3b8;
+            --accent:#60a5fa;
+            --glass: rgba(255,255,255,0.03);
+            --radius:12px;
+            color-scheme: dark;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            background:linear-gradient(180deg,#071021 0%,#071b2a 60%);
+            color:#e6eef8;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.4;
+            padding:32px;
+        }
+        .container{
+            max-width:1100px;
+            margin:0 auto;
+        }
+        header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+            margin-bottom:28px;
+        }
+        .brand{
+            display:flex;
+            gap:12px;
+            align-items:center;
+            text-decoration:none;
+            color:inherit;
+        }
+        .logo{
+            width:48px;height:48px;
+            background:linear-gradient(135deg,var(--accent),#7c3aed);
+            border-radius:10px;
+            display:grid;place-items:center;
+            font-weight:700;color:#061226;
+            box-shadow:0 6px 18px rgba(6,18,38,0.56);
+        }
+        nav a{
+            color:var(--muted);
+            text-decoration:none;
+            margin-left:18px;
+            font-weight:600;
+            transition:color .15s;
+        }
+        nav a:hover{color:var(--accent)}
+        main{
+            display:grid;
+            grid-template-columns:1fr 360px;
+            gap:28px;
+            align-items:start;
+        }
+        @media (max-width:900px){
+            main{grid-template-columns:1fr; padding-bottom:40px}
+        }
+        .card{
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius:var(--radius);
+            padding:20px;
+            box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .hero{
+            margin-bottom:18px;
+        }
+        h1{margin:0 0 8px 0; font-size:28px}
+        p.lead{margin:0;color:var(--muted)}
+        .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+        .chip{
+            background:var(--glass);
+            padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .projects-grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:14px;
+        }
+        @media (max-width:700px){ .projects-grid{grid-template-columns:1fr} }
+        .project{
+            display:flex;flex-direction:column;gap:10px;
+        }
+        .project .thumb{
+            height:140px;border-radius:8px;background:linear-gradient(90deg,#0b1320,#081827);
+            display:grid;place-items:center;color:var(--muted);
+            border:1px solid rgba(255,255,255,0.02);
+            font-weight:600;
+        }
+        .project h3{margin:0;font-size:16px}
+        .project p{margin:0;color:var(--muted);font-size:13px}
+        .meta{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+        .cta{
+            display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),#7c3aed);color:#061226;font-weight:700;text-decoration:none;
+        }
+        aside .profile{
+            display:flex;gap:12px;align-items:center;margin-bottom:12px;
+        }
+        .avatar{
+            width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#1d4ed8,#7c3aed);display:grid;place-items:center;font-weight:700;color:white;font-size:20px;
+        }
+        .contact-form{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+        input,textarea,select{
+            background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit;font:inherit;
+            outline: none;
+        }
+        button[type="submit"]{
+            margin-top:6px;
+            padding:10px;border-radius:8px;border:0;background:var(--accent);color:#061226;font-weight:700;cursor:pointer;
+        }
+        footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+        /* small utilities */
+        .muted{color:var(--muted);font-size:13px}
+        .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a class="brand" href="#">
+                <div class="logo">PC</div>
+                <div>
+                    <div style="font-weight:700">Your Name</div>
+                    <div class="muted" style="font-size:12px">Frontend Developer</div>
+                </div>
+            </a>
+            <nav aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <div class="card hero" id="about">
+                    <h1>Hi, I'm Your Name</h1>
+                    <p class="lead">I build clean, accessible, and performant web experiences. I focus on JavaScript, HTML, CSS and modern frontend tooling.</p>
+                    <div class="skills" aria-hidden="false">
+                        <span class="chip">HTML</span>
+                        <span class="chip">CSS</span>
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">React</span>
+                        <span class="chip">Accessibility</span>
+                    </div>
+                </div>
+
+                <div class="card" id="projects" aria-labelledby="projects-heading">
+                    <h2 id="projects-heading" style="margin-top:0">Selected Projects</h2>
+                    <div class="projects-grid" role="list">
+                        <article class="project card" role="listitem">
+                            <div class="thumb">Project A</div>
+                            <h3>Project A — Landing page</h3>
+                            <p>Responsive marketing landing page with animations and accessible markup.</p>
+                            <div class="row">
+                                <span class="meta">CSS · HTML · JS</span>
+                                <a class="cta" href="#" onclick="openDemo(event,'#')">Live</a>
+                            </div>
+                        </article>
+
+                        <article class="project card" role="listitem">
+                            <div class="thumb">Project B</div>
+                            <h3>Project B — Dashboard</h3>
+                            <p>Admin dashboard built with component-driven architecture and charts.</p>
+                            <div class="row">
+                                <span class="meta">React · D3</span>
+                                <a class="cta" href="#" onclick="openDemo(event,'#')">Live</a>
+                            </div>
+                        </article>
+
+                        <article class="project card" role="listitem">
+                            <div class="thumb">Project C</div>
+                            <h3>Project C — Blog</h3>
+                            <p>Fast static blog with Markdown and SEO-friendly structure.</p>
+                            <div class="row">
+                                <span class="meta">Static · SEO</span>
+                                <a class="cta" href="#" onclick="openDemo(event,'#')">Live</a>
+                            </div>
+                        </article>
+
+                        <article class="project card" role="listitem">
+                            <div class="thumb">Project D</div>
+                            <h3>Project D — UI Library</h3>
+                            <p>Reusable component library with documentation and tests.</p>
+                            <div class="row">
+                                <span class="meta">Design System</span>
+                                <a class="cta" href="#" onclick="openDemo(event,'#')">Repo</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:14px">
+                    <h2 style="margin-top:0">Work & Contact</h2>
+                    <p class="muted">Available for freelance and full-time opportunities. Below is a simple contact form — it opens your email client for quick messages.</p>
+
+                    <form id="contact" class="contact-form" onsubmit="handleContact(event)">
+                        <input id="name" name="name" type="text" placeholder="Your name" required />
+                        <input id="email" name="email" type="email" placeholder="Email address" required />
+                        <textarea id="message" name="message" placeholder="A short message" rows="4" required></textarea>
+                        <button type="submit">Send message</button>
+                        <div id="sent" class="muted" style="display:none">Opening your email client…</div>
+                    </form>
+                </div>
+
+            </section>
+
+            <aside>
+                <div class="card">
+                    <div class="profile">
+                        <div class="avatar">YN</div>
+                        <div>
+                            <div style="font-weight:700">Your Name</div>
+                            <div class="muted">Frontend Developer</div>
+                        </div>
+                    </div>
+
+                    <div class="muted" style="margin-bottom:12px">Quick links</div>
+                    <div class="row" style="margin-bottom:12px">
+                        <a href="#" class="chip" onclick="openDemo(event,'#')">Resume</a>
+                        <a href="#" class="chip" onclick="openDemo(event,'#')">GitHub</a>
+                        <a href="#" class="chip" onclick="openDemo(event,'#')">LinkedIn</a>
+                    </div>
+
+                    <div class="muted">Contact</div>
+                    <div style="margin-top:8px">
+                        <div class="muted">Email</div>
+                        <div style="font-weight:700">you@example.com</div>
+                        <div class="muted" style="margin-top:8px">Location</div>
+                        <div class="muted">City, Country</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:14px">
+                    <h3 style="margin:0 0 8px 0">Availability</h3>
+                    <p class="muted" style="margin:0 0 12px 0">Open to new projects — reply within 2 business days.</p>
+                    <a href="#contact" class="cta" onclick="document.getElementById('name').focus()">Get in touch</a>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            Built with care • © <span id="year"></span> Your Name
+        </footer>
+    </div>
+
+    <script>
+        // small helpers
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function openDemo(e, url){
+            e.preventDefault();
+            // replace with real links
+            if(url === '#') {
+                alert('Replace "#" with your project or profile URL.');
+                return;
+            }
+            window.open(url, '_blank', 'noopener');
+        }
+
+        function handleContact(e){
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if(!name || !email || !message) return;
+            const subject = encodeURIComponent('Portfolio contact from ' + name);
+            const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+            const mailto = 'mailto:you@example.com?subject=' + subject + '&body=' + body;
+            document.getElementById('sent').style.display = 'block';
+            // small delay for UX, then open
+            setTimeout(()=> {
+                window.location.href = mailto;
+                // hide sent after navigation attempt
+                setTimeout(()=> document.getElementById('sent').style.display='none', 1500);
+            }, 350);
+        }
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{
+            a.addEventListener('click', (e)=>{
+                const id = a.getAttribute('href');
+                if(id === '#') return;
+                const el = document.querySelector(id);
+                if(el){
+                    e.preventDefault();
+                    el.scrollIntoView({behavior:'smooth',block:'start'});
+                }
+            });
+        });
+    </script>
+</body>
+</html></div>
